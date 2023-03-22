@@ -8,7 +8,7 @@
 import Foundation
 
 struct Movie: Identifiable{
-    var id = UUID()
+    var id:UUID? = UUID()
     var title = ""
     var author = ""
     var poster = ""
