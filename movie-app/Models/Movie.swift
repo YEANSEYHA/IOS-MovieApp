@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Movie: Identifiable{
-    var id:UUID? = UUID()
-    var title = ""
-    var author = ""
-    var poster = ""
+struct Movie:  Decodable,Identifiable{
+    var id: Int
+    var title : String
+    var author : String
+    var poster : String
 }
