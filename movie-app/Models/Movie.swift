@@ -12,4 +12,5 @@ struct Movie:  Decodable,Identifiable{
     var title : String
     var author : String
     var poster : String
+    var movieUrl: String
 }
