@@ -7,8 +7,20 @@
 
 import SwiftUI
 import AVKit
+// extension to init hex code color
+extension Color {
+    init(hex: Int, opacity: Double = 1.0) {
+        let red = Double((hex & 0xff0000) >> 16) / 255.0
+        let green = Double((hex & 0xff00) >> 8) / 255.0
+        let blue = Double((hex & 0xff) >> 0) / 255.0
+        self.init(.sRGB, red: red, green: green, blue: blue, opacity: opacity)
+    }
+}
 
 struct MovieDetailView: View {
+    
+    
+    
     let movie:Movie
     var body: some View {
         
@@ -18,15 +30,12 @@ struct MovieDetailView: View {
                 VStack{
                     Rectangle()
                         .frame(height: 200)
-                        .foregroundColor(Color.gray)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+                        .foregroundColor(Color(hex: 0xf5f5f5))
                         .padding(0)
                     Rectangle()
                         .frame(height: 200)
                         .foregroundColor(Color.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+                        .padding(0)
                 }
                 // Only show video if we get a valid URL
 //                VStack {

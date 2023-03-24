@@ -17,6 +17,7 @@ struct ContentView: View {
                 Text("Welcome Scarleet !!!")
                     .padding(.leading,20)
                     .foregroundColor(.gray)
+                    .font(.system(size: 36))
                 
                 Text("Find your favorite films")
                     .padding([.top,.leading],20)
