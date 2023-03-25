@@ -7,6 +7,8 @@
 
 import SwiftUI
 import AVKit
+import AVFoundation
+
 // extension to init hex code color
 extension Color {
     init(hex: Int, opacity: Double = 1.0) {
@@ -18,7 +20,7 @@ extension Color {
 }
 
 struct MovieDetailView: View {
-    
+    var playerAV: AVPlayer!
     
     
     let movie:Movie
@@ -37,6 +39,10 @@ struct MovieDetailView: View {
                         .foregroundColor(Color.white)
                         .padding(0)
                 }
+                VStack{
+                    
+                }
+                
                 // Only show video if we get a valid URL
 //                VStack {
 //
@@ -47,22 +53,22 @@ struct MovieDetailView: View {
 //                }
                 
                 // Put Image on here
-                VStack(alignment: .leading){
-
-                    AsyncImage(url: URL(string: movie.poster)) { phase in
-                        if let image = phase.image {
-                            image
-                                .resizable()
-
-                            // Displays the loaded image.
-                        } else if phase.error != nil {
-                            Color.red // Indicates an error.
-                        } else {
-                            Color.blue // Acts as a placeholder.
-                        }
-                    }
-
-                }.frame(width: 250, height: 350)
+//                VStack(alignment: .leading){
+//
+//                    AsyncImage(url: URL(string: movie.poster)) { phase in
+//                        if let image = phase.image {
+//                            image
+//                                .resizable()
+//
+//                            // Displays the loaded image.
+//                        } else if phase.error != nil {
+//                            Color.red // Indicates an error.
+//                        } else {
+//                            Color.blue // Acts as a placeholder.
+//                        }
+//                    }
+//
+//                }.frame(width: 250, height: 350)
             }
             
             HStack{
