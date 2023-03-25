@@ -23,8 +23,10 @@ class MovieModel:ObservableObject {
               title: "Avatar",
               author: "YEAN SEYHA",
               poster: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
-            movieUrl: "https://drive.google.com/file/d/1jszq_vWZWmnv7Al-BemUhXDBE0sH9QeT/view"
+            movieUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
             ))
+        
+        
 
     }
     func getRemoteData() {

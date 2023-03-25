@@ -20,11 +20,13 @@ extension Color {
 }
 
 struct MovieDetailView: View {
-    var playerAV: AVPlayer!
     
     
     let movie:Movie
     var body: some View {
+        
+        //This URL is working
+//        let url = URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")
         
         let url = URL(string:movie.movieUrl)
         ScrollView {
@@ -40,7 +42,11 @@ struct MovieDetailView: View {
                         .padding(0)
                 }
                 VStack{
+                    VideoPlayer(
+                        player: AVPlayer(url: url!)
+                        
                     
+                    ).scaledToFit()
                 }
                 
                 // Only show video if we get a valid URL
