@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     @ObservedObject var model = MovieModel()
-    @State private var emailAddress = ""
+    @State var searchText = ""
+    @State var isSearching = false
+    
     private var gridItemLayout = [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)]
     var body: some View {
         NavigationView {
@@ -23,9 +26,49 @@ struct ContentView: View {
                     .padding([.top,.leading],20)
                     .font(.system(size: 30))
                 // Search Button here
-                TextField("Search for movies", text: $emailAddress)
-                            .textFieldStyle(.roundedBorder)
-                            .padding()
+                HStack{
+                    HStack{
+                        TextField("Search terms here", text: $searchText)
+                            .padding(.leading,24)
+                            .frame(height: 25)
+                    } .padding()
+                        .background(Color(.systemGray4))
+                        .padding(.horizontal)
+                        .cornerRadius(6)
+                        .onTapGesture( perform:{
+                            isSearching = true
+                        })
+                        .overlay (
+                            HStack{
+                                Image(systemName: "magnifyingglass")
+                                Spacer()
+                                if isSearching{
+                                    Button(action: { searchText = ""}, label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .padding(.vertical)
+                                    })
+                                    
+                                }
+                                
+                            }.padding(.horizontal,32)
+                        )
+                    if isSearching{
+                        Button(action: {
+                            isSearching = false
+                            searchText = ""
+                        }, label: {
+                            Text("Cancel")
+                                .padding(.trailing)
+                                .padding(.leading,0)
+                        })
+                        .transition(.move(edge: .trailing))
+                        .animation(.spring())
+                    }
+                    
+                    
+                }
+                    
+                
                 // Header
                 Text("Trending movies")
                     .padding([.top,.leading],20)
@@ -33,7 +76,9 @@ struct ContentView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout,spacing: 20){
-                        ForEach (model.movies){
+                        ForEach ((model.movies).filter({"\($0)".contains(searchText) ||
+                            searchText.isEmpty
+                        })){
                             model in
                             NavigationLink(
                                 destination: MovieDetailView(movie:model),

@@ -31,7 +31,7 @@ class MovieModel:ObservableObject {
     }
     func getRemoteData() {
         // String path
-        let urlString = "http://localhost:5000/api/movies"
+        let urlString = "http://localhost:5001/api/movies"
         
         // Create a url object
         let url = URL(string: urlString)
@@ -68,5 +68,6 @@ class MovieModel:ObservableObject {
         }
         // kick off data task
         dataTask.resume()
+        
     }
 }
